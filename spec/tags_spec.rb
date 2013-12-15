@@ -1,5 +1,7 @@
 require 'spec_helper'
 
+# TODO Test tags dirty flag, ensure it doesn't save when clean
+
 module MilkCap::RTM
   describe 'Task tags' do
     it 'can set a single tag and retrieve it from RTM' do

@@ -33,20 +33,6 @@ module MilkCap::RTM
     def initialize (hsh)
 
       @hsh = hsh
-      @operations = []
-    end
-
-    # Saves the instance back to RTM.
-    #
-    def save!
-
-      # TODO : compact !
-
-      @operations.reverse.each do |method_name, args|
-
-        self.class.execute method_name, args
-      end
-      @operations = []
     end
 
     protected
@@ -95,11 +81,6 @@ module MilkCap::RTM
     def self.timeline
 
       @@timeline ||= MilkCap::RTM.get_timeline
-    end
-
-    def queue_operation (method_name, args)
-
-      @operations << [ method_name, args ]
     end
   end
 
@@ -161,6 +142,13 @@ module MilkCap::RTM
       @tags = TagArray.new(self, tags)
     end
 
+    def save!
+      if self.tags.dirty?
+        args = prepare_api_args.merge( tags: self.tags.join(",") )
+        self.class.execute('setTags', args)
+      end
+    end
+
     # Deletes the task.
     #
     def delete!
@@ -178,10 +166,8 @@ module MilkCap::RTM
     # Sets the tags for the task.
     #
     def tags= (tags)
-      @tags = TagArray.new(list_id, normalize_tags_array(tags))
-      args = prepare_api_args
-      args[:tags] = @tags.join(',')
-      queue_operation('setTags', args)
+      @tags = TagArray.new(self, normalize_tags_array(tags))
+      @tags.dirty!
     end
 
     def self.find (params={})
@@ -272,53 +258,42 @@ module MilkCap::RTM
   class TagArray #:nodoc:
     include Enumerable
 
-    def initialize (task, tags)
-      @task = task
+    # TODO introduce method to return state change between clean & dirty tags
+    # in order to use addTags or removeTags instead of just setTags.
 
-      @tags = if tags.is_a?(Array)
-        tags
-      else
-        tags['tag']
-      end
+    def initialize (task, tags)
+      @dirty = false
+      @prev = @tags = tags
     end
 
+    def dirty=(dirty_state)
+      @dirty = dirty_state
+      @prev = @tags if !dirty_state
+    end
+    def dirty!; self.dirty=true; end
+    def dirty?; @dirty; end
+
     def << (tag)
-
       @tags << tag
-
-      args = prepare_api_args
-      args[:tags] = tag
-
-      @task.queue_operation('addTags', args)
+      self.dirty!
     end
 
     def delete (tag)
-
       @tags.delete tag
-
-      args = prepare_api_args
-      args[:tags] = tag
-
-      @task.queue_operation('removeTags', args)
+      self.dirty!
     end
 
     def clear
 
       @tags.clear
-
-      args = prepare_api_args
-      args[:tags] = ''
-
-      @task.queue_operation('setTags', args)
+      self.dirty!
     end
 
     def join (s)
-
       @tags.join(s)
     end
 
     def each
-
       @tags.each { |e| yield e }
     end
   end
