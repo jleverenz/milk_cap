@@ -107,6 +107,7 @@ module MilkCap::RTM
   # The RTM Task class.
   #
   class Task < MilkResource
+    include DataNormalization
 
     def self.task_attr (*att_names) #:nodoc:
 
@@ -155,7 +156,9 @@ module MilkCap::RTM
       @taskseries_id = h['id']
       @task_id = t['id']
 
-      @tags = TagArray.new(self, h['tags'])
+      # Normalize the RTM structure and put it in TagArray
+      tags = normalize_rtm_tags_hash( h['tags'] )
+      @tags = TagArray.new(self, tags)
     end
 
     # Deletes the task.
@@ -175,12 +178,10 @@ module MilkCap::RTM
     # Sets the tags for the task.
     #
     def tags= (tags)
-
-      tags = tags.split(',') if tags.is_a?(String)
-
-      @tags = TagArray.new(list_id, tags)
-
-      queue_operation('setTasks', tags.join(','))
+      @tags = TagArray.new(list_id, normalize_tags_array(tags))
+      args = prepare_api_args
+      args[:tags] = @tags.join(',')
+      queue_operation('setTags', args)
     end
 
     def self.find (params={})
@@ -272,7 +273,6 @@ module MilkCap::RTM
     include Enumerable
 
     def initialize (task, tags)
-
       @task = task
 
       @tags = if tags.is_a?(Array)

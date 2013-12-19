@@ -22,4 +22,5 @@
 
 require 'milk_cap/rtm/base'
 require 'milk_cap/rtm/credentials'
+require 'milk_cap/rtm/data_normalization'
 require 'milk_cap/rtm/resources'

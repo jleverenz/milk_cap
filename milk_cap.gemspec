@@ -26,6 +26,7 @@ Gem::Specification.new do |s|
     "lib/milk_cap/rtm.rb",
     "lib/milk_cap/rtm/base.rb",
     "lib/milk_cap/rtm/credentials.rb",
+    "lib/milk_cap/rtm/data_normalization.rb",
     "lib/milk_cap/rtm/resources.rb",
     "milk_cap.gemspec"
   ]

@@ -97,6 +97,13 @@ make then sure that all the 4 variables are set in the environment you use for r
   task.complete!
 
   #
+  # set tags for a task
+
+  task.tags = 'tag1,tag2'
+  task.tags = ['tag1', 'tag2']  # alternative
+  task.save!
+
+  #
   # deleting a task
 
   task.delete!
