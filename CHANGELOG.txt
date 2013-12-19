@@ -1,6 +1,11 @@
 
 = milk_cap CHANGELOG.txt
 
+== milk_cap - tbd       not yet released
+
+- removed rufus-verbs dependency (and rufus-lru)
+
+
 == milk_cap - 0.5.0     released 2014/01/02
 
 - rufus-rtm is now milk_cap: updated docs, contacts, gemspec, etc

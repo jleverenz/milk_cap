@@ -36,7 +36,6 @@ Jeweler::Tasks.new do |gem|
 
   gem.test_file = 'test/test.rb'
 
-  gem.add_dependency 'rufus-verbs', '>= 1.0.0'
   gem.add_development_dependency 'yard', '>= 0'
 end
 Jeweler::GemcutterTasks.new

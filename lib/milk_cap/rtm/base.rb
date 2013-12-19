@@ -20,9 +20,8 @@
 # Made in Japan.
 #++
 
-
-require 'rufus/verbs'
-
+require 'cgi'
+require 'net/http'
 require 'json' # gem install 'json' or 'json_pure'
 
 begin
@@ -89,9 +88,9 @@ module RTM
 
     sign(ps, secret)
 
-    res = Rufus::Verbs.get(endpoint, :query => ps)
+    res = get(endpoint, ps)
 
-    JSON.parse(res.body)['rsp']
+    JSON.parse(res)['rsp']
   end
 
   # Requests a timeline from RTM.
@@ -99,6 +98,12 @@ module RTM
   def self.get_timeline #:nodoc:
 
     milk(:method => 'rtm.timelines.create')['timeline']
+  end
+
+  def self.get(endpoint, hash)
+    query = hash.collect { |item| "#{item[0].to_s}=#{CGI.escape(item[1].to_s)}" }.join("&")
+    url = endpoint + '?' + query
+    Net::HTTP.get(URI.parse(url))
   end
 
 end

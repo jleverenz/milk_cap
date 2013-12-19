@@ -114,11 +114,6 @@ Note as well that, there is a 1 second delay before any request to the RTM serve
 * ...
 
 
-= dependencies
-
-The gem 'rufus-verbs' (http://rufus.rubyforge.org/rufus-verbs)
-
-
 == issue tracker
 
 https://github.com/jleverenz/milk_cap/issues
