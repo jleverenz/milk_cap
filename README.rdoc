@@ -27,7 +27,7 @@ You have to apply for the first two ones at http://www.rememberthemilk.com/servi
 Once you have the API key and the shared secret, you have to get the frob and the auth token. Fire your 'irb' and
 
   >> require 'rubygems'
-  >> require 'milk_cap/rtm'
+  >> require 'milk_cap'
 
   please visit this URL with your browser and then hit 'enter' :
 
@@ -49,7 +49,7 @@ make then sure that all the 4 variables are set in the environment you use for r
 == usage
 
   require 'rubygems'
-  require 'milk_cap/rtm'
+  require 'milk_cap'
 
   include MilkCap::RTM
 
@@ -107,7 +107,7 @@ Note that the methods that change the state of the Remember The Milk dataset hav
 Note as well that, there is a 1 second delay before any request to the RTM server, in order to respect their conditions. This may change in future releases.
 
 
-= features yet to implement
+== features yet to implement
 
 * tags modifications
 * smart lists
