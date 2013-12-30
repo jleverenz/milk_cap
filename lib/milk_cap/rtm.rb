@@ -1,6 +1,3 @@
-#--
-# Copyright (c) 2008-2010, John Mettraux, jmettraux@gmail.com
-#
 # Permission is hereby granted, free of charge, to any person obtaining a copy
 # of this software and associated documentation files (the "Software"), to deal
 # in the Software without restriction, including without limitation the rights
@@ -23,7 +20,6 @@
 #++
 
 
-require 'rufus/rtm/base'
-require 'rufus/rtm/credentials'
-require 'rufus/rtm/resources'
-
+require 'milk_cap/rtm/base'
+require 'milk_cap/rtm/credentials'
+require 'milk_cap/rtm/resources'

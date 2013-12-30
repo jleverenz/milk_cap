@@ -1,6 +1,4 @@
 #--
-# Copyright (c) 2008-2010, John Mettraux, jmettraux@gmail.com
-#
 # Permission is hereby granted, free of charge, to any person obtaining a copy
 # of this software and associated documentation files (the "Software"), to deal
 # in the Software without restriction, including without limitation the rights
@@ -23,7 +21,7 @@
 #++
 
 
-module Rufus::RTM
+module MilkCap::RTM
 
   #
   # A parent class for Task, List and co.
@@ -73,7 +71,7 @@ module Rufus::RTM
 
       args[:method] = "rtm.#{resource_name}.#{method_name}"
 
-      Rufus::RTM.milk(args)
+      MilkCap::RTM.milk(args)
     end
 
     # Returns the name of the resource as the API knows it
@@ -96,7 +94,7 @@ module Rufus::RTM
     #
     def self.timeline
 
-      @timeline ||= Rufus::RTM.get_timeline
+      @timeline ||= MilkCap::RTM.get_timeline
     end
 
     def queue_operation (method_name, args)
@@ -198,7 +196,7 @@ module Rufus::RTM
       args = {}
       args[:name] = name
       args[:list_id] = opts[:list_id] if opts[:list_id]
-      args[:timeline] = Rufus::RTM.get_timeline
+      args[:timeline] = MilkCap::RTM.get_timeline
       args[:parse] = 1 unless !opts[:parse]
 
       h = execute('add', args)

@@ -1,19 +1,19 @@
 
-= rufus-rtm
+= milk_cap
 
 
 == getting it
 
-  gem install rufus-rtm
+  gem install milk_cap
 
 or at
 
-http://rubyforge.org/frs/?group_id=4812
+https://github.com/jleverenz/milk_cap
 
 
 == credentials
 
-'rufus-rtm' expects to find RTM credentials in the environment. It will look for :
+'milk_cap' expects to find RTM credentials in the environment. It will look for:
 
 * RTM_API_KEY
 * RTM_SHARED_SECRET
@@ -27,7 +27,7 @@ You have to apply for the first two ones at http://www.rememberthemilk.com/servi
 Once you have the API key and the shared secret, you have to get the frob and the auth token. Fire your 'irb' and
 
   >> require 'rubygems'
-  >> require 'rufus/rtm'
+  >> require 'milk_cap/rtm'
 
   please visit this URL with your browser and then hit 'enter' :
 
@@ -43,15 +43,15 @@ visit, the given URL, you should finally be greeted by a message like "You have 
   export RTM_FROB=3cef465718317b837eec2faeb5340fe777d55c7c
   export RTM_AUTH_TOKEN=ca0022d705ea1831543b7cdd2d7e3d707a0e1efb
 
-make then sure that all the 4 variables are set in the environment you use for running 'rufus-rtm'.
+make then sure that all the 4 variables are set in the environment you use for running 'milk_cap'.
 
 
 == usage
 
   require 'rubygems'
-  require 'rufus/rtm'
+  require 'milk_cap/rtm'
 
-  include Rufus::RTM
+  include MilkCap::RTM
 
   #
   # listing tasks
@@ -72,7 +72,7 @@ make then sure that all the 4 variables are set in the environment you use for r
   #
   # adding a task
 
-  task = Task.add! "study this rufus-rtm gem"
+  task = Task.add! "study this milk_cap gem"
     # gets added to the 'Inbox' by default
 
   puts "task id is #{task.task_id}"
@@ -119,37 +119,29 @@ Note as well that, there is a 1 second delay before any request to the RTM serve
 The gem 'rufus-verbs' (http://rufus.rubyforge.org/rufus-verbs)
 
 
-== mailing list
-
-On the rufus-ruby list[http://groups.google.com/group/rufus-ruby] :
-
-http://groups.google.com/group/rufus-ruby
-
-
 == issue tracker
 
-http://github.com/jmettraux/rufus-rtm/issues
+https://github.com/jleverenz/milk_cap/issues
 
 
 == source
 
-http://github.com/jmettraux/rufus-rtm
+https://github.com/jleverenz/milk_cap
 
-  git clone git://github.com/jmettraux/rufus-rtm.git
-
-
-== author
-
-John Mettraux, jmettraux@gmail.com 
-http://jmettraux.wordpress.com
+  git clone git://github.com/jleverenz/milk_cap.git
 
 
-== the rest of Rufus
+== contributors
 
-http://rufus.rubyforge.org
+* John Mettraux, jmettraux@gmail.com
+* Jeff Leverenz, jeff.leverenz@gmail.com (maintainer)
+
+
+== origin
+
+milk_cap is the successor gem to rufus-rtm[https://github.com/jmettraux/rufus-rtm], originally authored by John Mettraux (jmettraux@gmail.com, http://jmettraux.wordpress.com). rufus-rtm is no longer actively supported.
 
 
 == license
 
 MIT
-

@@ -1,21 +1,12 @@
-
-#
-# Testing rufus-rtm
-#
-# John Mettraux at openwfe.org
-#
-# Tue Feb  5 18:16:55 JST 2008
-#
-
 require 'rubygems'
 
 require 'test/unit'
 
 $: << File.dirname(__FILE__) + '/../lib'
 
-require 'rufus/rtm'
+require 'milk_cap/rtm'
 
-include Rufus::RTM
+include MilkCap::RTM
 
 
 class TasksTest < Test::Unit::TestCase
