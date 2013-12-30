@@ -1,6 +1,7 @@
 
 
-require 'lib/rufus/rtm/base.rb'
+$: << File.join( File.dirname(__FILE__), "lib" )
+require 'rufus/rtm/base'
 
 require 'rubygems'
 require 'rake'
@@ -75,4 +76,3 @@ task :upload_website => [ :clean, :yard ] do
 
   sh "rsync -azv -e ssh html/rufus-rtm #{account}:#{webdir}/"
 end
-
