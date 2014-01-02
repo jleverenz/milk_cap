@@ -10,8 +10,8 @@ Gem::Specification.new do |s|
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["John Mettraux", "Jeff Leverenz"]
-  s.date = "2013-12-31"
-  s.description = "\n    yet another RememberTheMilk wrapper\n  "
+  s.date = "2014-01-02"
+  s.description = "\n    Yet another RememberTheMilk wrapper, successor to rufus-rtm.\n  "
   s.email = "jeff.leverenz@gmail.com"
   s.extra_rdoc_files = [
     "LICENSE.txt",
@@ -35,7 +35,7 @@ Gem::Specification.new do |s|
   s.licenses = ["MIT"]
   s.require_paths = ["lib"]
   s.rubygems_version = "2.1.11"
-  s.summary = "yet another RememberTheMilk wrapper"
+  s.summary = "Yet another RememberTheMilk wrapper, successor to rufus-rtm."
   s.test_files = ["test/test.rb"]
 
   if s.respond_to? :specification_version then

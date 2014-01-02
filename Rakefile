@@ -24,10 +24,10 @@ Jeweler::Tasks.new do |gem|
 
   gem.version = MilkCap::RTM::VERSION
   gem.name = 'milk_cap'
-  gem.summary = 'yet another RememberTheMilk wrapper'
+  gem.summary = 'Yet another RememberTheMilk wrapper, successor to rufus-rtm.'
 
   gem.description = %{
-    yet another RememberTheMilk wrapper
+    Yet another RememberTheMilk wrapper, successor to rufus-rtm.
   }
   gem.email = 'jeff.leverenz@gmail.com'
   gem.homepage = 'http://github.com/jleverenz/milk_cap/'
