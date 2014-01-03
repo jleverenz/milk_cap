@@ -8,11 +8,18 @@ require 'rake'
 
 
 #
+# TEST
+
+require 'rspec/core/rake_task'
+RSpec::Core::RakeTask.new(:spec)
+task :default => :spec
+
+
+#
 # CLEAN
 
 require 'rake/clean'
 CLEAN.include('pkg', 'tmp', 'html')
-task :default => [ :clean ]
 
 
 #
@@ -34,9 +41,10 @@ Jeweler::Tasks.new do |gem|
   gem.authors = [ 'John Mettraux', 'Jeff Leverenz' ]
   gem.licenses = 'MIT'
 
-  gem.test_file = 'test/test.rb'
+  gem.files.exclude 'spec/**'
 
   gem.add_development_dependency 'yard', '>= 0'
+  gem.add_development_dependency 'rspec', '~> 2.14'
 end
 Jeweler::GemcutterTasks.new
 

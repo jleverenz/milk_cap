@@ -10,7 +10,7 @@ Gem::Specification.new do |s|
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["John Mettraux", "Jeff Leverenz"]
-  s.date = "2014-01-03"
+  s.date = "2014-01-06"
   s.description = "\n    Yet another RememberTheMilk wrapper, successor to rufus-rtm.\n  "
   s.email = "jeff.leverenz@gmail.com"
   s.extra_rdoc_files = [
@@ -27,27 +27,27 @@ Gem::Specification.new do |s|
     "lib/milk_cap/rtm/base.rb",
     "lib/milk_cap/rtm/credentials.rb",
     "lib/milk_cap/rtm/resources.rb",
-    "milk_cap.gemspec",
-    "test/tasks_test.rb",
-    "test/test.rb"
+    "milk_cap.gemspec"
   ]
   s.homepage = "http://github.com/jleverenz/milk_cap/"
   s.licenses = ["MIT"]
   s.require_paths = ["lib"]
   s.rubygems_version = "2.1.11"
   s.summary = "Yet another RememberTheMilk wrapper, successor to rufus-rtm."
-  s.test_files = ["test/test.rb"]
 
   if s.respond_to? :specification_version then
     s.specification_version = 4
 
     if Gem::Version.new(Gem::VERSION) >= Gem::Version.new('1.2.0') then
       s.add_development_dependency(%q<yard>, [">= 0"])
+      s.add_development_dependency(%q<rspec>, ["~> 2.14"])
     else
       s.add_dependency(%q<yard>, [">= 0"])
+      s.add_dependency(%q<rspec>, ["~> 2.14"])
     end
   else
     s.add_dependency(%q<yard>, [">= 0"])
+    s.add_dependency(%q<rspec>, ["~> 2.14"])
   end
 end
 

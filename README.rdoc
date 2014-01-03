@@ -107,6 +107,11 @@ Note that the methods that change the state of the Remember The Milk dataset hav
 Note as well that, there is a 1 second delay before any request to the RTM server, in order to respect their conditions. This may change in future releases.
 
 
+== development
+
+* Testing with rspec -- run suite with 'rspec', 'rake' or 'rake spec'.
+
+
 == features yet to implement
 
 * tags modifications

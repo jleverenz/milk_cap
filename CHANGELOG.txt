@@ -1,6 +1,11 @@
 
 = milk_cap CHANGELOG.txt
 
+== milk_cap - tbd       not yet released
+
+- converted from test/unit to rspec, removed test files from gem distribution
+
+
 == milk_cap - 0.5.1     released 2014/01/03
 
 - removed rufus-verbs dependency (and rufus-lru)
