@@ -1,7 +1,7 @@
 
 = milk_cap CHANGELOG.txt
 
-== milk_cap - tbd       not yet released
+== milk_cap - 0.5.1     released 2014/01/03
 
 - removed rufus-verbs dependency (and rufus-lru)
 

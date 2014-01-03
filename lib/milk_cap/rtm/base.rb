@@ -45,7 +45,7 @@ end
 module MilkCap
 module RTM
 
-  VERSION = '0.5.0'
+  VERSION = '0.5.1'
 
   AUTH_ENDPOINT = "http://www.rememberthemilk.com/services/auth/"
   REST_ENDPOINT = "http://api.rememberthemilk.com/services/rest/"
