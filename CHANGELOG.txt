@@ -5,6 +5,7 @@
 
 - converted from test/unit to rspec, removed test files from gem distribution
 - removed forced 1 second sleep in RTM API calls
+- removed new timeline creation for each #add! call, no reuses single timeline
 
 
 == milk_cap - 0.5.1     released 2014/01/03

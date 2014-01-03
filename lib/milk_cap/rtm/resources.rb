@@ -94,7 +94,7 @@ module MilkCap::RTM
     #
     def self.timeline
 
-      @timeline ||= MilkCap::RTM.get_timeline
+      @@timeline ||= MilkCap::RTM.get_timeline
     end
 
     def queue_operation (method_name, args)
@@ -196,7 +196,7 @@ module MilkCap::RTM
       args = {}
       args[:name] = name
       args[:list_id] = opts[:list_id] if opts[:list_id]
-      args[:timeline] = MilkCap::RTM.get_timeline
+      args[:timeline] = timeline
       args[:parse] = 1 unless !opts[:parse]
 
       h = execute('add', args)
