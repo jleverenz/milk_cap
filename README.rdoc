@@ -104,8 +104,6 @@ make then sure that all the 4 variables are set in the environment you use for r
 
 Note that the methods that change the state of the Remember The Milk dataset have names ending with an exclamation mark.
 
-Note as well that, there is a 1 second delay before any request to the RTM server, in order to respect their conditions. This may change in future releases.
-
 
 == development
 

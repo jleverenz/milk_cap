@@ -63,8 +63,6 @@ module RTM
   #
   def self.milk (params={}) #:nodoc:
 
-    sleep 1
-
     endpoint = params.delete(:endpoint)
     endpoint = AUTH_ENDPOINT if endpoint == :auth
     endpoint = endpoint || REST_ENDPOINT
