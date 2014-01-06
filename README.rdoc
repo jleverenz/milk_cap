@@ -117,13 +117,6 @@ Note that the methods that change the state of the Remember The Milk dataset hav
 * Testing with rspec -- run suite with 'rspec', 'rake' or 'rake spec'.
 
 
-== features yet to implement
-
-* tags modifications
-* smart lists
-* ...
-
-
 == issue tracker
 
 https://github.com/jleverenz/milk_cap/issues
