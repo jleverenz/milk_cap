@@ -7,6 +7,7 @@
 - removed forced 1 second sleep in RTM API calls
 - removed new timeline creation for each #add! call, no reuses single timeline
 - supports setting task tags
+- BUGFIX: correctly parse taskseries with tasks array
 
 
 == milk_cap - 0.5.1     released 2014/01/03

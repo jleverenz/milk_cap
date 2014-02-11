@@ -90,5 +90,13 @@ module MilkCap::RTM
       task_created.name.should == taskname
     end
 
+    # https://github.com/jleverenz/milk_cap/issues/1
+    it "parses taskseries with tasks array -- repeating tasks with come completed" do
+      taskname = "milk the cow #{Time.now.to_i} *daily"
+      task = Task.add!(taskname)
+      task.complete!
+      ts = Task.find  # this was throwing a TypeError
+    end
+
   end
 end

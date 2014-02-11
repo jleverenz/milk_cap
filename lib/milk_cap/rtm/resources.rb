@@ -95,7 +95,7 @@ module MilkCap::RTM
       att_names.each do |att_name|
         class_eval %{
           def #{att_name}
-            @hsh['task']['#{att_name}']
+            @task_hash['#{att_name}']
           end
         }
       end
@@ -127,18 +127,19 @@ module MilkCap::RTM
       :estimate,
       :due
 
-    def initialize (list_id, h)
+    # Task series may have multiple tasks. task_hash used to specify which task
+    # in series.
+    def initialize (list_id, task_series_hash, task_hash)
 
-      super(h)
-
-      t = h['task']
+      super(task_series_hash)
+      @task_hash = task_hash
 
       @list_id = list_id
-      @taskseries_id = h['id']
-      @task_id = t['id']
+      @taskseries_id = task_series_hash['id']
+      @task_id = @task_hash['id']
 
       # Normalize the RTM structure and put it in TagArray
-      tags = normalize_rtm_tags_hash( h['tags'] )
+      tags = normalize_rtm_tags_hash( task_series_hash['tags'] )
       @tags = TagArray.new(self, tags)
     end
 
@@ -224,9 +225,15 @@ module MilkCap::RTM
     end
 
     def self.parse_taskseries (list_id, o)
-
       o = [ o ] unless o.is_a?(Array)
-      o.collect { |s| self.new(list_id, s) }
+
+      # o is an array of taskseries.  Collect flattened array of tasks out of
+      # all taskseries
+      o.inject([]) do |m,s|
+        tasks = s['task']
+        tasks = [ tasks ] unless tasks.is_a?(Array)
+        m + tasks.collect { |t| self.new(list_id, s, t) }
+      end
     end
   end
 
