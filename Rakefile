@@ -45,6 +45,7 @@ Jeweler::Tasks.new do |gem|
 
   gem.add_development_dependency 'yard', '>= 0'
   gem.add_development_dependency 'rspec', '~> 2.14'
+  gem.add_development_dependency 'jeweler', '~> 2.0.1'
 end
 Jeweler::GemcutterTasks.new
 
