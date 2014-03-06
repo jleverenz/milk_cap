@@ -1,11 +1,11 @@
 
 = milk_cap CHANGELOG.txt
 
-== milk_cap - tbd       not yet released
+== milk_cap - 0.5.2     released 2014/03/06
 
 - converted from test/unit to rspec, removed test files from gem distribution
 - removed forced 1 second sleep in RTM API calls
-- removed new timeline creation for each #add! call, no reuses single timeline
+- removed new timeline creation for each #add! call, now reuses single timeline
 - supports setting task tags
 - BUGFIX: correctly parse taskseries with tasks array
 
