@@ -84,28 +84,6 @@ module MilkCap::RTM
     end
   end
 
-  class List < MilkResource
-
-    attr \
-      :list_id
-
-    milk_attr \
-      :name, :sort_order, :smart, :archived, :deleted, :position, :locked
-
-    def initialize (h)
-
-      super
-      @list_id = h['id']
-    end
-
-    def self.find (params={})
-
-      execute('getList', params)[resource_name]['list'].collect do |h|
-        self.new(h)
-      end
-    end
-  end
-
   #
   # An array of tasks.
   #

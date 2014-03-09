@@ -1,3 +1,4 @@
+#--
 # Permission is hereby granted, free of charge, to any person obtaining a copy
 # of this software and associated documentation files (the "Software"), to deal
 # in the Software without restriction, including without limitation the rights
@@ -19,10 +20,29 @@
 # Made in Japan.
 #++
 
-
-require 'milk_cap/rtm/base'
-require 'milk_cap/rtm/credentials'
-require 'milk_cap/rtm/data_normalization'
-require 'milk_cap/rtm/list'
 require 'milk_cap/rtm/resources'
-require 'milk_cap/rtm/task'
+
+module MilkCap::RTM
+
+  class List < MilkResource
+
+    attr \
+      :list_id
+
+    milk_attr \
+      :name, :sort_order, :smart, :archived, :deleted, :position, :locked
+
+    def initialize (h)
+
+      super
+      @list_id = h['id']
+    end
+
+    def self.find (params={})
+
+      execute('getList', params)[resource_name]['list'].collect do |h|
+        self.new(h)
+      end
+    end
+  end
+end
