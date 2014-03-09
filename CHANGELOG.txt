@@ -1,5 +1,9 @@
-
 = milk_cap CHANGELOG.txt
+
+== milk_cap - tbd       not yet released
+
+- Refactored/organized Task & List classes & test/spec files
+
 
 == milk_cap - 0.5.2     released 2014/03/06
 
