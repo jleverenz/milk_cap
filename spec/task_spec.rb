@@ -7,26 +7,26 @@ module MilkCap::RTM
 
       t0 = Task.add!(taskname)
 
-      t0.should be_a(Task)
-      t0.name.should == taskname
+      expect(t0).to be_a(Task)
+      expect(t0.name).to eq taskname
 
       ts = Task.find
 
       t1 = ts.find { |t| t.task_id == t0.task_id }
-      t1.name.should == taskname
-      t1.tags.join('.').should == ''
+      expect(t1.name).to eq taskname
+      expect(t1.tags.join('.')).to eq ''
 
       ts = Task.find :filter => "status:incomplete"
 
       t1 = ts.find { |t| t.task_id == t0.task_id }
-      t1.name.should == taskname
+      expect(t1.name).to eq taskname
 
       t1.delete!
 
       ts = Task.find :filter => "status:incomplete"
 
       t1 = ts.find { |t| t.task_id == t0.task_id }
-      t1.should be_nil
+      expect(t1).to be_nil
     end
 
     it "created and deleted on a specified list, filtered find by list" do
@@ -39,12 +39,12 @@ module MilkCap::RTM
 
       tasks = Task.find :list_id => work.list_id, :filer => 'status:incomplete'
 
-      tasks.find { |t| t.task_id == t0.task_id }.should_not be_nil
+      expect(tasks.find { |t| t.task_id == t0.task_id }).to_not be_nil
 
       t0.complete!
 
       tasks = Task.find :list_id => work.list_id, :filer => 'status:completed'
-      tasks.find { |t| t.task_id == t0.task_id }.should_not be_nil
+      expect(tasks.find { |t| t.task_id == t0.task_id }).to_not be_nil
 
       t0.delete!
     end
@@ -57,8 +57,8 @@ module MilkCap::RTM
       tasks = Task.find
 
       task_created = tasks.find { |t| t.task_id == task.task_id }
-      task_created.due.should_not be_empty
-      task_created.name.should == taskname  # 'tomorrow' is stripped as due date
+      expect(task_created.due).to_not be_empty
+      expect(task_created.name).to eq taskname  # 'tomorrow' is stripped as due date
     end
 
     it "can add tasks with smart add turned off" do
@@ -68,8 +68,8 @@ module MilkCap::RTM
       tasks = Task.find
 
       task_created = tasks.find { |t| t.task_id == task.task_id }
-      task_created.due.should be_empty
-      task_created.name.should == taskname
+      expect(task_created.due).to be_empty
+      expect(task_created.name).to eq taskname
     end
 
     # https://github.com/jleverenz/milk_cap/issues/1

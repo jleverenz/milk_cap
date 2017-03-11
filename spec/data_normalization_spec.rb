@@ -5,29 +5,29 @@ module MilkCap::RTM
     include DataNormalization
 
     it 'converts nil and empty string to empty array' do
-      normalize_tags_array(nil).should == []
-      normalize_tags_array('').should == []
+      expect(normalize_tags_array(nil)).to eq []
+      expect(normalize_tags_array('')).to eq []
     end
 
     it 'converts a single string without commas to a one item array' do
-      normalize_tags_array('tag1').should == ['tag1']
+      expect(normalize_tags_array('tag1')).to eq ['tag1']
     end
 
     it 'converts a comma sperated string list to multiple item array' do
-      normalize_tags_array('tag1,tag2').should == ['tag1', 'tag2']
+      expect(normalize_tags_array('tag1,tag2')).to eq ['tag1', 'tag2']
     end
 
     it 'passes through array input as the same output' do
-      normalize_tags_array([]).should == []
-      normalize_tags_array(['tag1']).should == ['tag1']
-      normalize_tags_array(['tag1','tag2']).should == ['tag1', 'tag2']
+      expect(normalize_tags_array([])).to eq []
+      expect(normalize_tags_array(['tag1'])).to eq ['tag1']
+      expect(normalize_tags_array(['tag1','tag2'])).to eq ['tag1', 'tag2']
     end
 
     it 'normalizes (trims) leading and trailing spaces in strings and arrays' do
-      normalize_tags_array(' tag1').should == ['tag1']
-      normalize_tags_array('tag1 , tag2').should == ['tag1', 'tag2']
-      normalize_tags_array([' tag1']).should == ['tag1']
-      normalize_tags_array(['tag1 ',' tag2']).should == ['tag1', 'tag2']
+      expect(normalize_tags_array(' tag1')).to eq ['tag1']
+      expect(normalize_tags_array('tag1 , tag2')).to eq ['tag1', 'tag2']
+      expect(normalize_tags_array([' tag1'])).to eq ['tag1']
+      expect(normalize_tags_array(['tag1 ',' tag2'])).to eq ['tag1', 'tag2']
     end
   end
 
@@ -35,9 +35,9 @@ module MilkCap::RTM
     include DataNormalization
     it 'handles various flavors of tag data from RTM response' do
       # See function under test for RTM response explanation (3 flavors below)
-      normalize_rtm_tags_hash( [] ).should == []
-      normalize_rtm_tags_hash( {"tag" => "tag1" } ).should == ['tag1']
-      normalize_rtm_tags_hash( { "tag" => ["tag1", "tag2"] } ).should == ['tag1','tag2']
+      expect(normalize_rtm_tags_hash( [] )).to eq []
+      expect(normalize_rtm_tags_hash( {"tag" => "tag1" } )).to eq ['tag1']
+      expect(normalize_rtm_tags_hash( { "tag" => ["tag1", "tag2"] } )).to eq ['tag1','tag2']
     end
   end
 end
