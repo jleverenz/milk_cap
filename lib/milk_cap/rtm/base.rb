@@ -71,7 +71,7 @@ module RTM
 
     ps['api_key'] = params[:api_key] || ENV['RTM_API_KEY']
 
-    raise 'API_KEY missing from environment or parameters, cannot proceed' \
+    raise 'RTM_API_KEY missing from environment or parameters, cannot proceed' \
       unless ps['api_key']
 
     ps['frob'] = params[:frob] || ENV['RTM_FROB']
