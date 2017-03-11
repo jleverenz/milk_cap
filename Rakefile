@@ -1,10 +1,10 @@
+require 'rubygems'
+require 'bundler/setup'
 
+require 'rake'
 
 $: << File.join( File.dirname(__FILE__), "lib" )
 require 'milk_cap/rtm/base'
-
-require 'rubygems'
-require 'rake'
 
 
 #
